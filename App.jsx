@@ -335,11 +335,7 @@ function Hero() {
       <div className="pointer-events-none absolute -left-32 top-10 h-72 w-72 rounded-full bg-violet-200/30 blur-3xl" />
       <div className="pointer-events-none absolute -right-20 top-40 h-72 w-72 rounded-full bg-fuchsia-200/30 blur-3xl" />
 
-      {/* animated flowing paths — hero background */}
-      <FloatingPaths position={1} subtle />
-      <FloatingPaths position={-1} subtle />
-
-      <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-5 py-14 md:grid-cols-2 md:gap-12 lg:gap-16 lg:px-8 lg:py-24">
+      <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-5 py-14 md:grid-cols-2 md:gap-12 lg:gap-16 lg:px-8 lg:py-24">
         {/* Left half — headline, summary, bullets */}
         <div>
           <Pill dot>dMRV Platform — Live</Pill>
@@ -641,62 +637,6 @@ function Footer() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Intro splash — animated flowing paths + scroll-to-reveal           */
-/* ------------------------------------------------------------------ */
-function FloatingPaths({ position, subtle = false }) {
-  const paths = Array.from({ length: 36 }, (_, i) => ({
-    id: i,
-    d: `M-${380 - i * 5 * position} -${189 + i * 6}C-${380 - i * 5 * position} -${
-      189 + i * 6
-    } -${312 - i * 5 * position} ${216 - i * 6} ${152 - i * 5 * position} ${
-      343 - i * 6
-    }C${616 - i * 5 * position} ${470 - i * 6} ${684 - i * 5 * position} ${
-      875 - i * 6
-    } ${684 - i * 5 * position} ${875 - i * 6}`,
-    width: (subtle ? 0.4 : 0.6) + i * (subtle ? 0.025 : 0.035),
-  }));
-
-  return (
-    <div
-      className="pointer-events-none absolute inset-0"
-      style={subtle ? { opacity: 0.55 } : undefined}
-      aria-hidden
-    >
-      <svg
-        className="h-full w-full"
-        viewBox="0 0 696 316"
-        fill="none"
-        preserveAspectRatio="xMidYMid slice"
-      >
-        <defs>
-          <linearGradient id={`grad-${position}`} x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#7c3aed" />
-            <stop offset="100%" stopColor="#c026d3" />
-          </linearGradient>
-        </defs>
-        {paths.map((path) => (
-          <path
-            key={path.id}
-            d={path.d}
-            stroke={`url(#grad-${position})`}
-            strokeWidth={path.width}
-            strokeLinecap="round"
-            fill="none"
-            className="flow-path"
-            style={{
-              opacity: subtle ? 0.03 + path.id * 0.013 : 0.08 + path.id * 0.022,
-              strokeDasharray: "16 30",
-              animationDuration: `${14 + (path.id % 12) * 1.5}s`,
-              animationDelay: `${-path.id * 0.45}s`,
-            }}
-          />
-        ))}
-      </svg>
-    </div>
-  );
-}
-
-/* ------------------------------------------------------------------ */
 /*  Page                                                               */
 /* ------------------------------------------------------------------ */
 export default function App() {
@@ -705,23 +645,7 @@ export default function App() {
       className="min-h-screen bg-white antialiased"
       style={{ fontFamily: "'Inter', ui-sans-serif, system-ui, sans-serif" }}
     >
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-
-        /* flowing dashes along the hero background paths */
-        .flow-path {
-          animation-name: flowDash;
-          animation-timing-function: linear;
-          animation-iteration-count: infinite;
-        }
-        @keyframes flowDash {
-          to { stroke-dashoffset: -920; }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .flow-path { animation: none !important; }
-        }
-      `}</style>
+      <style>{`@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');`}</style>
       <Navbar />
       <main>
         <Hero />
