@@ -407,7 +407,7 @@ const SECTORS = [
     tag: "SECTOR",
     title: "Agroforestry",
     desc: "Monitor tree growth, biomass, and sequestration in mixed land-use and forestry systems.",
-    href: "#",
+    href: "https://dmrv-agro.vercel.app/",
   },
   {
     icon: Flame,
