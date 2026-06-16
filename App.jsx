@@ -400,24 +400,29 @@ const SECTORS = [
     tag: "SECTOR",
     title: "Agriculture",
     desc: "Track soil carbon, regenerative practices, and emission reductions across managed farmland.",
+    href: "https://dmrv-agri-main-l6jo.vercel.app/",
   },
   {
     icon: Trees,
     tag: "SECTOR",
     title: "Agroforestry",
     desc: "Monitor tree growth, biomass, and sequestration in mixed land-use and forestry systems.",
+    href: "#",
   },
   {
     icon: Flame,
     tag: "SECTOR",
     title: "Biochar",
     desc: "Quantify durable carbon removal from pyrolysis and certify long-term biochar storage.",
+    href: "https://dmrv-biochar-2.vercel.app/",
+   
   },
   {
     icon: Droplets,
     tag: "SECTOR",
     title: "Biofuel",
     desc: "Measure lifecycle emissions and feedstock sustainability across the biofuel value chain.",
+    href: "https://d-mrv-bio-fuel-iv7u.vercel.app/",
   },
 ];
 
@@ -442,6 +447,9 @@ function SectorGrid() {
             <Reveal key={s.title} delay={i * 90}>
               <a
                 href="#"
+                href={s.href}
+                target={s.href !== "#" ? "_blank" : undefined}
+                rel={s.href !== "#" ? "noopener noreferrer" : undefined}
                 className="group flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-violet-200 hover:shadow-xl hover:shadow-violet-100/60"
               >
                 <div className="flex items-start justify-between">
